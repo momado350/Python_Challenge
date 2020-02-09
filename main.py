@@ -1,27 +1,28 @@
+# improt modules or dependencies
 import os
 import csv
-#open CSV File
+# assign the file path and open CSV File
 data_analysis = os.path.join("budget_data.csv")
 with open(data_analysis) as csvfile:
-# Variables declaratin 
+# Variables declaration with values for each
     total_months = 0
     profits = 0
-#Read csv file 
+# Read csv file 
     csvreader=csv.reader(csvfile,delimiter=',')
-# count total Rows
+# count total Rows in our csv file
     rows=[r for r in csvreader]
-    # determine the first row 
+    # determine the first row in our csv file 
     change_profits = int(rows[1][1])
     max = rows[1]
     min=rows[1]
-    # for loop the Data in the sheet
+    # apply for loop to the Data 
     for i in range(1,len(rows)):
         
         total_months += 1
         row = rows[i]
         profits = int(row[1]) + profits
         
-        # Exclude Header 
+        # Exclude Header, since we do not need it 
         if i > 1:
             change_profits = change_profits + int(row[1]) - int(rows[i-1][1])
         # calculate max profits
@@ -45,7 +46,7 @@ print("Greatest Increase in profits:" + str(max[0])+" ($" + str(max[1])+")")
 print("Greatest Decrease in profits:" + str(min[0])+" ($" + str(min[1])+")")
 
 
-# export txt.file
+# export txt.file to be printed out when running this Python file
 with open("my_PyBank_output.txt", "w") as text_file:
     print("Financial Analysis", file=text_file)
     print("-------------------", file=text_file)
@@ -55,4 +56,4 @@ with open("my_PyBank_output.txt", "w") as text_file:
     print("Average Change in profits Change: " +"$"+ str(average_change_profits), file=text_file)
     print("Greatest Increase in profits:" + str(max[0])+" ($" + str(max[1])+")", file=text_file)
     print("Greatest Decrease in profits:" + str(min[0])+" ($" + str(min[1])+")", file=text_file)
-
+# this work is finaly done, ready to be added, commited and pushed to github!
