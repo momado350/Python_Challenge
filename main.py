@@ -10,7 +10,7 @@ with open(data_analysis) as csvfile:
 # Read csv file 
     csvreader=csv.reader(csvfile,delimiter=',')
 # count total Rows in our csv file
-    rows=[r for r in csvreader]
+    rows=[x for x in csvreader]
     # determine the first row in our csv file 
     change_profits = int(rows[1][1])
     max = rows[1]
